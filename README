@@ -1,0 +1,52 @@
+Mihu Florin
+324CC
+
+Tema 2 - IOCLA
+
+Task 1: Apelam functia bruteforce_singlebyte_xor. Aceasta functie parcurge 
+matricea cu o cheie pe un octet. Aplicam fiecare cheie de la 0 la 255 si cautam 
+printre noile valori sirul "revient". Daca acest sir este gasit, inseamna ca 
+pe acea linie se afla si mesajul ce trebuie decriptat, asa ca setam flag-ul 
+(registrul esi) pe valoarea 1 si continuam sa parcurgem matricea pana la 
+gasirea valorii 0, moment la care se incheie functia. In registrul eax avem 
+indexul la care se afla terminatorul de sir, iar in ecx indexul inceputului de 
+linie. Dupa aceea, afisam pe rand caracterele intre cei doi indecsi. Apoi, 
+afisam registrul in care avem cheia de decriptare salvata, calculam linia la 
+care se afla mesajul si o afisam.
+
+Task 2: Apelam functia bruteforce_singlebyte_xor, pentru a avea acces la vechea 
+cheie si la numarul liniei la care se afla mesajul. Decriptam si suprascriem 
+matricea folosind cheia obtinuta la task-ul anterior. Calculam indexul de la 
+vom incepe sa stocam mesajul (inceputul urmatoarei linii de unde se afla 
+vechiul mesaj) si punem litera cu litera noul mesaj in matrice. Apoi, calculam 
+noua cheie conform formulei din enunt si criptam intreaga matrice cu noua cheie. 
+In final, afisam matricea folosind functia print_image.
+
+Task 3: La inceput, stocam adresa sirului si transformam indexul din ASCII in 
+numar intreg. Trecem prin elementele matricei incepand cu indexul curent si 
+testam fiecare litera din sirul dat ca parametru, adaugand la indexul curent 
+codificare respectiva a literei. Cat timp nu intalnim caracterul '\0', repetam 
+operatia. La final, adaugam la urmatorul index al matricei terminatorul de sir 
+si apelam functia de afisare a matricei.
+
+Task 4: Stocam sirul ce va fi criptat si indexul de la care vom incepe 
+criptarea, apoi vom apela functia de criptare LSB. Folosim o masca de 8 biti 
+pentru a putea verifica valoarea bitului curent. Masca este shiftata la dreapta 
+dupa fiecare pas. Aflam valoarea bitului si o punem valoare pe bitul cel mai 
+putin semnificativ al elementului curent din matrice. Daca masca ajunge la 0, 
+o resetam. Dupa criptarea terminatorului de sir, functia se opreste, si afisam  
+noua matrice obtinuta.
+
+Task 5: Stocam indexul de la care vom extrage mesajul si apelam functia de 
+decriptare LSB. Parcurgem cate 8 elemente din matrice la fiecare pas si formam 
+un numar cu bitii cei mai nesemnificativi ai fiecarui element. Daca numarul 
+este diferit de 0, afisam caracterul si repetam procesul, in caz contrar, oprim 
+functia.
+
+Task 6: Parcurgem matricea in ordinea normala si, pentru fiecare element care 
+nu se afla pe prima sau ultima linie/prima sau ultima coloana, calculam suma 
+elementului curent cu elementele vecine(sus, jos, stanga, dreapta) si o 
+impartim la 5. Catul operatiei va fi salvat pe stiva. Apoi, parcurgem matricea 
+in ordine inversa si stocam la elementele care nu se afla pe prima sau ultima 
+linie/prima sau ultima coloana valorile ce se afla in stiva, calculate anterior. 
+In final, apelam functia de afisare a matricei.
